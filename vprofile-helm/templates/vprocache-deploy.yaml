@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: vprofile-memcached
+  name: vprofile-memcached
+  namespace: vprofile
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vprofile-memcached
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: vprofile-memcached
+    spec:
+      containers:
+      - image: memcached:latest
+        name: memcached
+        ports:
+        - containerPort: 11211
+        resources: {}
+status: {}

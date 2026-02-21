@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: vprofile-memcached
+  name: vprocache01
+  namespace: vprofile
+spec:
+  ports:
+  - port: 11211
+    protocol: TCP
+    targetPort: 11211
+  selector:
+    app: vprofile-memcached
+status:
+  loadBalancer: {}

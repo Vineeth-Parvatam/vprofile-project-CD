@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: vprofile-app
+  name: vprofile-app
+  namespace: vprofile
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vprofile-app
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: vprofile-app
+    spec:
+      containers:
+      - image: vineeth2210/vprofile-app:latest
+        name: vprofile-app
+        ports:
+        - containerPort: 8080
+        resources: {}
+status: {}

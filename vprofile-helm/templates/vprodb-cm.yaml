@@ -1,0 +1,8 @@
+apiVersion: v1
+data:
+  MYSQL_DATABASE: accounts
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  name: vprodb-cm
+  namespace: vprofile
