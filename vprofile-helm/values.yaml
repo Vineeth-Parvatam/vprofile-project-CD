@@ -105,6 +105,7 @@ autoscaling:
 
 # Additional volumes on the output Deployment definition.
 volumes: []
+# -----
 # - name: foo
 #   secret:
 #     secretName: mysecret
