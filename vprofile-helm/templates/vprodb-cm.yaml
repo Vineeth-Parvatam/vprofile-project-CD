@@ -5,4 +5,4 @@ kind: ConfigMap
 metadata:
   creationTimestamp: null
   name: vprodb-cm
-  namespace: vprofile
+  namespace: {{ .Values.namespace }}

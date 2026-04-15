@@ -60,3 +60,27 @@ Create the name of the service account to use
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
+
+{{/*
+Define functions to pass image
+*/}}
+{{- define "app.image" -}}
+{{- if .Values.registry }}
+{{- .Values.registry | trimSuffix "/"}}{{ "/" }}
+{{- end }}
+{{- .Values.app.image.repository }}{{ ":" }}
+{{- with .Values.app }}
+{{- .image.tag | default "latest" }}
+{{- else }}
+{{- "latest" }}
+{{- end }}
+{{- end }}
+
+{{- define "cache.image" -}}
+{{- .Values.cache.image.repository }}{{ ":" }}
+{{- with .Values.cache }}
+{{- .image.tag | default "latest" }}
+{{- else }}
+{{- "latest" }}
+{{- end }}
+{{- end }}

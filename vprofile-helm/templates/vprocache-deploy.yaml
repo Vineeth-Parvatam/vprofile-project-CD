@@ -3,24 +3,28 @@ kind: Deployment
 metadata:
   creationTimestamp: null
   labels:
-    app: vprofile-memcached
-  name: vprofile-memcached
-  namespace: vprofile
+    app: {{ .Chart.Name }}{{ "-memcached" }}
+  name: {{ .Chart.Name }}{{ "-memcached" }}
+  namespace: {{ .Values.namespace }}
 spec:
+  {{- with .Values.cache }}
+  replicas: {{ .replicaCount | default 1 }}
+  {{- else }}
   replicas: 1
+  {{- end }}
   selector:
     matchLabels:
-      app: vprofile-memcached
+      app: {{ .Chart.Name }}{{ "-memcached" }}
   strategy: {}
   template:
     metadata:
       creationTimestamp: null
       labels:
-        app: vprofile-memcached
+        app: {{ .Chart.Name }}{{ "-memcached" }}
     spec:
       containers:
-      - image: memcached:latest
-        name: memcached
+      - image: {{ include "cache.image" . }}
+        name: {{ .Chart.Name }}{{ "-memcached" }}
         ports:
         - containerPort: 11211
         resources: {}

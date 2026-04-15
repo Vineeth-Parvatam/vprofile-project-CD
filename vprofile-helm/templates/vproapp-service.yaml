@@ -3,16 +3,16 @@ kind: Service
 metadata:
   creationTimestamp: null
   labels:
-    app: vprofile-app
-  name: vproapp
-  namespace: vprofile
+    app: {{ .Chart.Name }}{{ "-app" }}
+  name: {{ .Chart.Name }}{{ "-app-svc" }}
+  namespace: {{ .Values.namespace }}
 spec:
   ports:
   - port: 8080
     protocol: TCP
     targetPort: 8080
   selector:
-    app: vprofile-app
+    app: {{ .Chart.Name }}{{ "-app" }}
   type: NodePort
 status:
   loadBalancer: {}

@@ -3,24 +3,28 @@ kind: Deployment
 metadata:
   creationTimestamp: null
   labels:
-    app: vprofile-app
-  name: vprofile-app
-  namespace: vprofile
+    app: {{ .Chart.Name }}{{ "-app" }}
+  name: {{ .Chart.Name }}{{ "-app" }}
+  namespace: {{ .Values.namespace }}
 spec:
-  replicas: 2
+  {{- with .Values.app}}
+  replicas: {{ .replicaCount | default 1 }}
+  {{- else }}
+  replicas: 1
+  {{- end }}
   selector:
     matchLabels:
-      app: vprofile-app
+      app: {{ .Chart.Name }}{{ "-app" }}
   strategy: {}
   template:
     metadata:
       creationTimestamp: null
       labels:
-        app: vprofile-app
+        app: {{ .Chart.Name }}{{ "-app" }}
     spec:
       containers:
-      - image: vineeth2210/vprofile-app:latest
-        name: vprofile-app
+      - image: {{ include "app.image" . }}
+        name: {{ .Chart.Name }}{{ "-app" }}
         ports:
         - containerPort: 8080
         resources: {}
