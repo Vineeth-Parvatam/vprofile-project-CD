@@ -4,7 +4,7 @@ metadata:
   creationTimestamp: null
   labels:
     app: {{ .Chart.Name }}{{ "-app" }}
-  name: {{ .Chart.Name }}{{ "-app-svc" }}
+  name: vproapp
   namespace: {{ .Values.namespace }}
 spec:
   ports:

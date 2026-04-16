@@ -3,16 +3,16 @@ kind: Service
 metadata:
   creationTimestamp: null
   labels:
-    app: vprofile-web
-  name: vproweb
-  namespace: vprofile
+    app: {{ .Chart.Name }}{{ "-web" }}
+  name: {{ .Chart.Name }}{{ "-web" }}
+  namespace: {{ .Values.namespace }}
 spec:
   ports:
   - port: 80
     protocol: TCP
     targetPort: 80
   selector:
-    app: vprofile-web
+    app: {{ .Chart.Name }}{{ "-web" }}
   type: NodePort
 status:
   loadBalancer: {}

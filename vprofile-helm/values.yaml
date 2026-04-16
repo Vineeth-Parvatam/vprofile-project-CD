@@ -10,3 +10,21 @@ cache:
   image:
     repository: memcached
     tag: ""
+db:
+  replicaCount: 1
+  image:
+    repository: vprofile-db
+    tag: ""
+  config:
+    MYSQL_DATABASE: accounts
+rabbitmq:
+  replicaCount: 1
+  image:
+    repository: rabbitmq
+    tag: ""
+web:
+  replicaCount: 1
+  image:
+    repository: vprofile-web
+    tag: ""
+    

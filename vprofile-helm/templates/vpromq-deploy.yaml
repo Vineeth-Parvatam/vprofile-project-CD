@@ -3,24 +3,28 @@ kind: Deployment
 metadata:
   creationTimestamp: null
   labels:
-    app: vprofile-rabbitmq
-  name: vprofile-rabbitmq
-  namespace: vprofile
+    app: {{ .Chart.Name }}{{ "-rabbitmq" }}
+  name: {{ .Chart.Name }}{{ "-rabbitmq" }}
+  namespace: {{ .Values.namespace }}
 spec:
+  {{- with .Values.rabbitmq }}
+  replicas: {{ .replicaCount | default 1 }}
+  {{- else }}
   replicas: 1
+  {{- end }}
   selector:
     matchLabels:
-      app: vprofile-rabbitmq
+      app: {{ .Chart.Name }}{{ "-rabbitmq" }}
   strategy: {}
   template:
     metadata:
       creationTimestamp: null
       labels:
-        app: vprofile-rabbitmq
+        app: {{ .Chart.Name }}{{ "-rabbitmq" }}
     spec:
       containers:
-      - image: rabbitmq:latest
-        name: rabbitmq
+      - image: {{ include "rabbitmq.image" . }}
+        name: {{ .Chart.Name }}{{ "-rabbitmq" }}
         ports:
         - containerPort: 5672
         resources: {}

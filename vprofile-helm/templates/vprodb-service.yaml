@@ -3,15 +3,15 @@ kind: Service
 metadata:
   creationTimestamp: null
   labels:
-    app: vprofile-db
+    app: {{ .Chart.Name }}{{ "-db" }}
   name: vprodb
-  namespace: vprofile
+  namespace: {{ .Values.namespace }}
 spec:
   ports:
   - port: 3306
     protocol: TCP
     targetPort: 3306
   selector:
-    app: vprofile-db
+    app: {{ .Chart.Name }}{{ "-db" }}
 status:
   loadBalancer: {}

@@ -3,8 +3,8 @@ kind: Service
 metadata:
   creationTimestamp: null
   labels:
-    app: {{ .Chart.Name }}{{ "memcached" }}
-  name: {{ .Chart.Name }}{{ "-memcached-svc" }}
+    app: {{ .Chart.Name }}{{ "-memcached" }}
+  name: vprocache01
   namespace: {{ .Values.namespace }}
 spec:
   ports:
@@ -12,6 +12,6 @@ spec:
     protocol: TCP
     targetPort: 11211
   selector:
-    app: {{ .Chart.Name }}{{ "memcached" }}
+    app: {{ .Chart.Name }}{{ "-memcached" }}
 status:
   loadBalancer: {}

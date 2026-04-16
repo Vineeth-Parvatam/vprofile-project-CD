@@ -84,3 +84,32 @@ Define functions to pass image
 {{- "latest" }}
 {{- end }}
 {{- end }}
+
+{{- define "db.image" -}}
+{{- .Values.registry | trimSuffix "/"}}{{ "/" }}
+{{- .Values.db.image.repository }}{{ ":" }}
+{{- with .Values.db }}
+{{- .image.tag | default "latest" }}
+{{- else }}
+{{- "latest" }}
+{{- end }}
+{{- end }}
+
+{{- define "rabbitmq.image" -}}
+{{- .Values.rabbitmq.image.repository }}{{ ":" }}
+{{- with .Values.rabbitmq }}
+{{- .image.tag | default "latest" }}
+{{- else }}
+{{- "latest" }}
+{{- end }}
+{{- end }}
+
+{{- define "web.image" -}}
+{{- .Values.registry | trimSuffix "/"}}{{ "/" }}
+{{- .Values.web.image.repository}}{{ ":" }}
+{{- with .Values.db }}
+{{- .image.tag | default "latest" }}
+{{- else }}
+{{- "latest" }}
+{{- end }}
+{{- end }}
