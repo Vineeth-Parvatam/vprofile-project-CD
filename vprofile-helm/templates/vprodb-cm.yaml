@@ -3,6 +3,5 @@ data:
   MYSQL_DATABASE: {{ .Values.db.config.MYSQL_DATABASE }}
 kind: ConfigMap
 metadata:
-  creationTimestamp: null
   name: {{ .Chart.Name }}{{ "-db-cm" }}
   namespace: {{ .Values.namespace }}

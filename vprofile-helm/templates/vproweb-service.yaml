@@ -1,7 +1,6 @@
 apiVersion: v1
 kind: Service
 metadata:
-  creationTimestamp: null
   labels:
     app: {{ .Chart.Name }}{{ "-web" }}
   name: {{ .Chart.Name }}{{ "-web" }}
@@ -14,5 +13,3 @@ spec:
   selector:
     app: {{ .Chart.Name }}{{ "-web" }}
   type: NodePort
-status:
-  loadBalancer: {}

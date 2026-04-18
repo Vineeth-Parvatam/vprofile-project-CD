@@ -1,7 +1,6 @@
 apiVersion: v1
 kind: Service
 metadata:
-  creationTimestamp: null
   labels:
     app: {{ .Chart.Name }}{{ "-rabbitmq" }}
   name: vpromq01
@@ -13,5 +12,3 @@ spec:
     targetPort: 5672
   selector:
     app: {{ .Chart.Name }}{{ "-rabbitmq" }}
-status:
-  loadBalancer: {}

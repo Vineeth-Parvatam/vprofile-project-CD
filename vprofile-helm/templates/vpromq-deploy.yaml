@@ -1,7 +1,6 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  creationTimestamp: null
   labels:
     app: {{ .Chart.Name }}{{ "-rabbitmq" }}
   name: {{ .Chart.Name }}{{ "-rabbitmq" }}
@@ -18,7 +17,6 @@ spec:
   strategy: {}
   template:
     metadata:
-      creationTimestamp: null
       labels:
         app: {{ .Chart.Name }}{{ "-rabbitmq" }}
     spec:
@@ -28,4 +26,3 @@ spec:
         ports:
         - containerPort: 5672
         resources: {}
-status: {}

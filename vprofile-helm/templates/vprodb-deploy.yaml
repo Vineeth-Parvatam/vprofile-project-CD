@@ -1,7 +1,6 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  creationTimestamp: null
   labels:
     app: {{ .Chart.Name }}{{ "-db" }}
   name: {{ .Chart.Name }}{{ "-db" }}
@@ -18,7 +17,6 @@ spec:
   strategy: {}
   template:
     metadata:
-      creationTimestamp: null
       labels:
         app: {{ .Chart.Name }}{{ "-db" }}
     spec:
@@ -49,4 +47,3 @@ spec:
               key: MYSQL_DATABASE
               name: {{ .Chart.Name }}{{ "-db-cm" }}
         resources: {}
-status: {}

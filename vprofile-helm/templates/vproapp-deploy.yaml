@@ -1,7 +1,6 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  creationTimestamp: null
   labels:
     app: {{ .Chart.Name }}{{ "-app" }}
   name: {{ .Chart.Name }}{{ "-app" }}
@@ -18,7 +17,6 @@ spec:
   strategy: {}
   template:
     metadata:
-      creationTimestamp: null
       labels:
         app: {{ .Chart.Name }}{{ "-app" }}
     spec:
@@ -28,4 +26,3 @@ spec:
         ports:
         - containerPort: 8080
         resources: {}
-status: {}
